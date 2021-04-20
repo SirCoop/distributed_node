@@ -1,3 +1,5 @@
+const { ServerDuplexStreamImpl } = require('@grpc/grpc-js/build/src/server-call');
+
 const server = require('fastify')();
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || '4000';
@@ -18,7 +20,10 @@ const fibonacci = limit => {
     return next;
 };
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 const getFibonacci = async (req, res) => {
+    await sleep(10);
     const { params: { limit } } = req;
     return String(fibonacci(Number(limit)));
 };

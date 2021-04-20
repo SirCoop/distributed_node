@@ -19,9 +19,11 @@
     "fastify-gql": "5.3",
     "helmet": "^3.21.2",
     "joi": "^13.1.0",
+    "middie": "5.1",
     "morgan": "^1.9.1",
     "node-fetch": "2.6",
     "pug": "^3.0.2",
-    "rc": "^1.2.8"
+    "rc": "^1.2.8",
+    "statsd-client": "^0.4.4"
   }
 }

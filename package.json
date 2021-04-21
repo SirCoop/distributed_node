@@ -18,12 +18,15 @@
     "fastify": "3.2",
     "fastify-gql": "5.3",
     "helmet": "^3.21.2",
+    "ioredis": "4.17",
     "joi": "^13.1.0",
     "middie": "5.1",
     "morgan": "^1.9.1",
     "node-fetch": "2.6",
+    "pg": "8.3",
     "pug": "^3.0.2",
     "rc": "^1.2.8",
-    "statsd-client": "^0.4.4"
+    "statsd-client": "^0.4.4",
+    "zipkin-lite": "^0.1.1"
   }
 }

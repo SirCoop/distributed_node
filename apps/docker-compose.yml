@@ -1,0 +1,40 @@
+# version of Docker Compose that is compatible with my current Docker version
+version: "3.9"
+services:
+    zipkin:
+        image: openzipkin/zipkin-slim:2.19
+        ports: 
+            - "127.0.0.1:9411:9411"
+    recipe-api:
+      build:
+# path to dockerfile instead of named image
+        context: ./recipe-api
+        dockerfile: Dockerfile-zipkin
+      ports:
+      - "127.0.0.1:4000:4000"
+# env var pairs used by service
+      environment:
+# accept requests from outside the container
+        HOST: 0.0.0.0
+        ZIPKIN: zipkin:9411
+# zipkin service should be started before recipe-api container
+      depends_on:
+        - zipkin
+## note two space indent
+    web-api:
+      build:
+# path to dockerfile instead of named image
+        context: ./web-api
+        dockerfile: Dockerfile-zipkin
+      ports:
+        - "127.0.0.1:3000:3000"
+# env var pairs used by service
+      environment:
+        TARGET: recipe-api:4000
+        ZIPKIN: zipkin:9411
+        HOST: 0.0.0.0
+# zipkin, recipe-api services should be started before web-api container
+      depends_on:
+        - zipkin
+        - recipe-api
+

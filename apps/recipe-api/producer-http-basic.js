@@ -5,6 +5,8 @@ const PORT = process.env.PORT || '4000';
 
 console.log(`app worker pid=${process.pid}`);
 
+server.get('/', async (req, res) => "Hello Cooper!");
+
 server.get('/recipes/:id', async (req, res) => {
     console.log(`route worker pid=${process.pid}`);
     const id = Number(req.params.id);

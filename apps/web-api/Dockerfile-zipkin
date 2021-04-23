@@ -1,0 +1,14 @@
+# Deps stage
+# specify image base
+FROM node:14.8.0-alpine3.12
+# switch to container working directory i.e. cd /srv
+WORKDIR /srv
+# copy file from host to container
+COPY package*.json ./
+# install npm modules if env=prod
+# npm ci is faster than npm install
+RUN npm ci --only=production
+# copy files from cwd (.) to /srv (WORKDIR)
+COPY . .
+# start service
+CMD [ "node", "consumer-http-zipkin.js" ]

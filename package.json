@@ -20,6 +20,8 @@
     "helmet": "^3.21.2",
     "ioredis": "4.17",
     "joi": "^13.1.0",
+    "lru-cache": "6.0",
+    "memjs": "1.2",
     "middie": "5.1",
     "morgan": "^1.9.1",
     "node-fetch": "2.6",
